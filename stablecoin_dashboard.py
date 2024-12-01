@@ -66,7 +66,7 @@ df = load_data()
 @st.cache_data
 def load_fed_data():
     # Load FED data
-    fed_data = pd.read_csv('c:/Users/carle/Downloads/FRB_H15.csv', skiprows=5)
+    fed_data = pd.read_csv('FRB_H15.csv', skiprows=5)
     fed_data['Time Period'] = pd.to_datetime(fed_data['Time Period'])
     
     # Select relevant columns
