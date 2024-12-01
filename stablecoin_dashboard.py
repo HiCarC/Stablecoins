@@ -309,7 +309,10 @@ elif section == "Detailed Analytics":
         window = 30
         rolling_corr = df['USDT'].rolling(window).corr(df['USDC'])
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.plot(df['Date'][window-1:], rolling_corr)
+        # Ensure dates and correlation values are aligned
+        valid_dates = df['Date'][window-1:].reset_index(drop=True)
+        valid_corr = rolling_corr.dropna().reset_index(drop=True)
+        ax.plot(valid_dates, valid_corr)
         ax.set_title(f"{window}-Day Rolling Correlation (USDT-USDC)")
         ax.grid(True)
         st.pyplot(fig)
